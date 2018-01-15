@@ -1,10 +1,11 @@
 #coding : utf-8
 
 def recherche():
-	pass
+	pass	
 
 def creationNouveauContact():
-	pass
+	newcontact=input("Nom du contact:")
+	
 
 def afficher():
 	pass

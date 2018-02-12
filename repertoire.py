@@ -5,22 +5,20 @@ from tkinter import *
 
 def recherche():
 	pass
+def enregistrement(entr1, entr2, entr3):
+	print("click")
+	nom = entr2.get()
+	print(nom)
+	prenom = entr1.get()
+	numero = entr3.get()
+	fichier = open("repertoire.txt","a")
+	fichier.write(nom+"\n"+prenom+"\n"+numero+"\n")
+	fichier.close()
+	entr1.delete(0, len(prenom))
+	entr2.delete(0, len(nom))
+	entr3.delete(0, len(numero))
 
 def creationNouveauContact():
-	
-
-	def enregistrement():
-		print("click")
-		nom = entr2.get()
-		print(nom)
-		prenom = entr1.get()
-		numero = entr3.get()
-		fichier = open("repertoire.txt","a")
-		fichier.write(nom+"\n"+prenom+"\n"+numero+"\n")
-		fichier.close()
-		varNom.set("")
-		varPrenom.set("")
-		varNumero.set("")
 
 	label = Label(fenetre, text="creationNouveauContact")
 	label1 = Label(fenetre, text='Prenom:',fg="white", bg="grey" )
@@ -45,7 +43,7 @@ def creationNouveauContact():
 	entr3.grid(row=2,column=4, sticky=W)
 
 
-	bouton4 = Button(fenetre, text="Ajouter", command=enregistrement, bg="grey", activebackground="grey",font="arial", height="2")
+	bouton4 = Button(fenetre, text="Ajouter", command=lambda : enregistrement(entr1, entr2, entr3), bg="grey", activebackground="grey",font="arial", height="2")
 	bouton4.grid(row=3,column=4)
 
 
@@ -64,6 +62,7 @@ def afficher():
 
 
 
+
 fenetre = Tk()
 fenetre.geometry('550x250')
 fenetre.title("Repertoire")
@@ -78,21 +77,3 @@ bouton2.grid(row=3,column=5)
 
 
 fenetre.mainloop()
-
-
-
-choix = ""
-while choix != "4" :
-	print("Vous souhaitez :\n1. Créer un nouveau contact\n2. Afficher les contacts\n3. Rechercher un contact\n4. Quitter")
-	choix = input("Entrez votre choix : ")
-	if choix == "1":
-		creationNouveauContact()
-	elif choix == "2":
-		afficher()
-	elif choix == "3":
-		recherche()
-	elif choix == "4":
-		pass
-	else :
-		print("Erreur de saisie")
-
